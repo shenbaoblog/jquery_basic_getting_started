@@ -5,11 +5,50 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <script></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 </head>
 
 <body>
+    <!-- <h1 id="title">???</h1> -->
+    <ul id="list">
+        <!-- list items -->
+    </ul>
+    <a href="" id="click-me">Click Hello!</a>
 
+    <form id="my-form">
+        <p><input type="text" name="" id="my-input"></p>
+        <p><input type="submit"></p>
+    </form>
+
+    <!-- Javascript Below this line -->
+    <script>
+        var myList = [];
+
+        function myFunction(message) {
+            myList.push(message);
+            var output = "";
+            for (var i in myList) {
+                console.log(myList[i]);
+                output += "<li>" + myList[i] + "</li>";
+            }
+            $("#list").html(output);
+            console.log(myList);
+
+        }
+        myFunction("apple");
+
+        $("#click-me").click(function (event) {
+            event.preventDefault();
+            myFunction("Hello World!");
+        });
+
+        $("#my-form").submit(function (event) {
+            event.preventDefault();
+            var textInput = $("#my-input").val();
+            console.log(textInput);
+            myFunction(textInput);
+        });
+    </script>
 </body>
 
 </html>
